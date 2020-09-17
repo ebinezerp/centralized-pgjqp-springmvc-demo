@@ -1,0 +1,75 @@
+spring configuration -
+ xml 
+ annotation
+
+
+DAO
+
+import org.hibernate.SessionFactory;
+
+public class Register{
+
+   @Autowired
+   priavte CustomerService customerService;
+
+
+   doPost(){
+ 
+      customerService.save(customer);
+
+   }
+
+}
+
+
+
+
+
+public interface CustomerService{
+    public boolean save(Customer customer);
+    public Customer get(Integer id);
+    public Customer get(String email, String password);
+    public boolean update(Customer customer);
+}
+
+
+
+public class  CustomerServiceImpl implements CustomerService{
+
+    private SessionFactory sessionFactory;
+ }
+
+
+
+
+Spring Web MVC
+======================
+
+To develop web application in MVC Architecture.
+
+Struts , EJB
+
+Spring provides loose coupling.
+
+
+1. Spring web mvc follows front controller pattern
+
+    DispatcherServlet - FrontController
+
+
+2. Controller -> handles the request to generate response, once response is generated,response sent to client but along with response, spring controller sends view name also.
+
+3. ViewResolvers -> takes the view name from response of spring controller, and resovles the view to                     client
+
+
+
+DispatcherServlet -> config -> web.xml
+
+
+
+
+
+
+
+
+

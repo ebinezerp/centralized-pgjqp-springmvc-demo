@@ -1,0 +1,81 @@
+Spring webmvc
+
+Front Controller - DispatcherServlet - config -web.xml
+dispatcher-servlet.xml 
+    <context:component-scan/> - to scan all the packages for controllers and components
+    <context:annotation-cofig/> - to declare that application using annotation based config
+    <mvc:annotation-driven/> - then only all the controller that are annotated with @Controller are                                registered with application
+
+   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourcesViewResolver">
+	<property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>   
+   </bean>
+
+
+@Controller
+publc class MyController{
+
+   //request handling methods
+
+   @RequestMapping("/")
+   public String index(){
+     return "index";
+   }
+
+}
+
+
+Model(I)  - to carry the data from controller to view as request attribute
+  model.addAttribute(String str, Object obj);
+
+Spring form 
+    <%@tablib uri="http://org.springframwork.com/spring/tags/form" prefix="sf"%>
+
+   <sf:form action="" method="" modelAttribute="user">
+	<sf:input path="fieldname" />
+   <sf:/form>
+
+   @ModelAttribute - to receive model attribute data form spring form to controller.
+
+
+Advantage:
+   1. directly we can bind object to form
+   2. due to binding of object to form, it provides "form back".
+
+
+
+
+
+- to map a particular url to particular request method type
+
+@RequestMapping(value="url", method= RequestMethod.GET)
+@RequestMapping(value="url", method= RequestMethod.POST)
+
+- to avoid 405 errors, as good practice, we learned mataining same url for different request methods
+
+
+@RequestMapping(value="/register", method= RequestMethod.GET) - to resolve view
+@RequestMapping(value="/register", method= RequestMethod.POST) - to process registration request
+
+as replacement for above snippets, Spring 4+ version have
+
+@GetMapping("/register")
+@PostMapaping("/register")
+
+
+ModelAndView(C):
+
+To carry data from controller to view and resolve the view.
+
+
+
+@Service - it is similar like @Component only, Spring creates bean to class that are annotated with @Service but to represent functional difference with b/w simple POJO to service class, Services class can be annotated with @Service instead of @Component.
+
+
+
+
+
+
+
+
+
